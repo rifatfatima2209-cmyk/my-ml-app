@@ -21,13 +21,19 @@ ticker = 'infy' # Change to any stock symbol
 data = yf.download(ticker, start='2024-01-01', end='2025-01-01')
 
 
-# In[6]:
+# 2. FIX: Flatten the columns (Removes the 'INFY' header layer)
+data.columns = data.columns.get_level_values(0) 
 
+# 3. Clean the data (Removes any missing values)
+dataset = data[['Close']].dropna() 
+
+
+# In[6]:
 
 # 2. Preprocess Data
 # We use 'Close' price for prediction
-df = data[['Close']]
-dataset = df.values
+#df = data[['Close']]
+#dataset = df.values
 training_data_len = int(np.ceil(len(dataset) * .8))
 
 scaler = MinMaxScaler(feature_range=(0,1))
