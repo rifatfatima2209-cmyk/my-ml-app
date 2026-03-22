@@ -25,7 +25,7 @@ data = yf.download(ticker, start='2024-01-01', end='2025-01-01')
 data.columns = data.columns.get_level_values(0) 
 
 # 3. Clean the data (Removes any missing values)
-dataset = data[['Close']].dropna() 
+dataset = data[['Close']].values
 
 
 # In[6]:
