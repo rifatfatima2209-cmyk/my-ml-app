@@ -89,8 +89,8 @@ predictions = scaler.inverse_transform(predictions) # Undo scaling
 
 
 # 5. Visualize
-train = df[:training_data_len]
-valid = df[training_data_len:]
+train = data[:training_data_len]
+valid = data[training_data_len:]
 valid['Predictions'] = predictions
 
 plt.figure(figsize=(12,6))
